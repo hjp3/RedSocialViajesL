@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;   //incluimos librería softdelete
 
 class Usuario extends Model
 {
-	use SoftDeletes;
+	//use SoftDeletes;
 	
     protected $fillable = [
     	"nombre_completo",
@@ -17,7 +17,7 @@ class Usuario extends Model
     	"password"
     ];
 
-    protected $defaults = array(
+    protected $defaults = array(       // atributo por default
 		'avatar' => "avatar.img"
     );
 
@@ -27,5 +27,10 @@ class Usuario extends Model
 	    parent::__construct($attributes);
 	}
 
-	protected $dates = ['deleted_at'];
+	//protected $dates = ['deleted_at'];     // sobreescribirmos propiedad date para softdelete
+
+
+	public function galeriaUsuario(){
+		return $this->hasOne('App\GaleriaUsuario');
+	}
 }

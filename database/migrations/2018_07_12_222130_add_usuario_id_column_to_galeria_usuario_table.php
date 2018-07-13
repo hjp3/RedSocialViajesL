@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDeletedAtColumnToUsuariosTables extends Migration
+class AddUsuarioIdColumnToGaleriaUsuarioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddDeletedAtColumnToUsuariosTables extends Migration
      */
     public function up()
     {
-        Schema::table('usuariosphp', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('galeria_usuario', function (Blueprint $table) {
+            $table->string('usuario_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddDeletedAtColumnToUsuariosTables extends Migration
      */
     public function down()
     {
-        Schema::table('usuariosphp', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
+        Schema::table('galeria_usuario', function (Blueprint $table) {
+            $table->dropColumn('usuario_id');
         });
     }
 }
